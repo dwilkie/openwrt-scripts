@@ -7,6 +7,11 @@
 # backup your router first !!!!
 # script expects factory settings !!!!
 
+# After running this script you can optionally manually add the WAN port to act as a LAN port
+# Under Network -> Interfaces, click the Devices Tab, configre the br-lan device and add the WAN port
+# to the Bridge ports.
+
+HOSTNAME="change-me"
 
 # these services do not run on dumb APs
 for i in firewall dnsmasq odhcpd; do
@@ -27,7 +32,7 @@ uci delete network.lan.netmask
 
 # change the host name to "WifiAP"
 
-uci set system.@system[0].hostname='KidsRoomAP'
+uci set system.@system[0].hostname="$HOSTNAME"
 
 
 echo '#####################################################################'

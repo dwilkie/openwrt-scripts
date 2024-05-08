@@ -14,13 +14,11 @@
 MESH_NAME="change-me"
 MESH_PWD="change-me"
 MESH_RADIO=radio0
-MESH_CHANNEL=1
 
 WIFI_NAME="change-me"
 WIFI_PWD="change-me"
 WIFI_RADIO=radio1
-WIFI_CHANNEL=36
-WIFI_MOBDOMAIN='1234'
+WIFI_CHANNEL=auto
 
 # install the wpad mesh package
 
@@ -43,10 +41,9 @@ uci set wireless.wifinet0.mesh_fwding='1'
 uci set wireless.wifinet0.mesh_rssi_threshold='0'
 uci set wireless.wifinet0.key=$MESH_PWD
 uci set wireless.wifinet0.network='lan'
-uci set "wireless.$MESH_RADIO.channel"=$MESH_CHANNEL
 uci delete "wireless.$MESH_RADIO.disabled"
 
-# create the AP Wifi
+# create the AP Wifi 3G
 
 uci set wireless.wifinet1=wifi-iface
 uci set wireless.wifinet1.device=$MESH_RADIO
@@ -55,24 +52,24 @@ uci set wireless.wifinet1.ssid=$WIFI_NAME
 uci set wireless.wifinet1.encryption='psk2'
 uci set wireless.wifinet1.key=$WIFI_PWD
 uci set wireless.wifinet1.ieee80211r='1'
-uci set wireless.wifinet1.mobility_domain=$WIFI_MOBDOMAIN
 uci set wireless.wifinet1.ft_over_ds='0'
 uci set wireless.wifinet1.ft_psk_generate_local='1'
 uci set wireless.wifinet1.network='lan'
-uci set "wireless.$MESH_RADIO.channel"=$MESH_CHANNEL
+uci set "wireless.$MESH_RADIO.channel"=$WIFI_CHANNEL
 uci delete "wireless.$MESH_RADIO.disabled"
 
-uci set wireless.wifinet1=wifi-iface
-uci set wireless.wifinet1.device=$WIFI_RADIO
-uci set wireless.wifinet1.mode='ap'
-uci set wireless.wifinet1.ssid=$WIFI_NAME
-uci set wireless.wifinet1.encryption='psk2'
-uci set wireless.wifinet1.key=$WIFI_PWD
-uci set wireless.wifinet1.ieee80211r='1'
-uci set wireless.wifinet1.mobility_domain=$WIFI_MOBDOMAIN
-uci set wireless.wifinet1.ft_over_ds='0'
-uci set wireless.wifinet1.ft_psk_generate_local='1'
-uci set wireless.wifinet1.network='lan'
+# create the AP Wifi 5G
+
+uci set wireless.wifinet2=wifi-iface
+uci set wireless.wifinet2.device=$WIFI_RADIO
+uci set wireless.wifinet2.mode='ap'
+uci set wireless.wifinet2.ssid=$WIFI_NAME
+uci set wireless.wifinet2.encryption='psk2'
+uci set wireless.wifinet2.key=$WIFI_PWD
+uci set wireless.wifinet12.ieee80211r='1'
+uci set wireless.wifinet2.ft_over_ds='0'
+uci set wireless.wifinet2.ft_psk_generate_local='1'
+uci set wireless.wifinet2.network='lan'
 uci set "wireless.$WIFI_RADIO.channel"=$WIFI_CHANNEL
 uci delete "wireless.$WIFI_RADIO.disabled"
 
