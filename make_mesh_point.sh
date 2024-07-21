@@ -22,8 +22,8 @@ WIFI_CHANNEL=auto
 
 # install the wpad mesh package
 
-opkg update
-opkg install --force-overwrite wpad-mesh-openssl
+opkg update --no-check-certificate
+opkg install --force-overwrite --no-check-certificate wpad-mesh-openssl
 
 # delete the "OpenWrt" radios
 

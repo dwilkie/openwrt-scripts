@@ -8,7 +8,7 @@
 # script expects factory settings !!!!
 
 # After running this script you can optionally manually add the WAN port to act as a LAN port
-# Under Network -> Interfaces, click the Devices Tab, configre the br-lan device and add the WAN port
+# Under Network -> Interfaces, click the Devices Tab, configure the br-lan device and add the WAN port
 # to the Bridge ports.
 
 HOSTNAME="change-me"
